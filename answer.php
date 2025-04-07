@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ICS2O-Unit2-04-HTML-MDL -->
+<!-- ICS2O-Unit3-04-HTML-MDL -->
 <html lang="en-ca">
 
 <head>
@@ -30,29 +30,22 @@
       <div class="right-image">
         <img src="./images/temperature.png" alt="temperature" />
       </div>
-      <p>Formula</p>
-      <br />
-      <p>(°F - 32) x 5/9 = °C</p>
-      <br />
-      <p>Please enter integers for temperature:</p>
-      <br />
-      <form action="answer.php" method="GET">
-        <span>temperature:</span>
-        <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="temperature" name="temperature">
-          <label class="mdl-textfield__label" for="temperature"></label>
-          <span class="mdl-textfield__error">Input is not a number!</span>
+      <div class="page-content-php">
+        <div id="user-info">
+          <?php
+          //input
+          $temperatureInFahrenheit = $_GET["temperature"];
+          // process
+          $temperatureInCelsius = ($temperatureInFahrenheit - 32) * 5 / 9;
+          $roundNumber = round($temperatureInCelsius, 3);
+          // output
+          echo "If the temperature in fahrenheit is " . $temperatureInFahrenheit . "°F, then the temperature in celsius is " . $roundNumber . "°C.";
+          ?>
+          <div class="page-content-answer">
+            <a href="./index.php">Return</a>
+          </div>
         </div>
-        <span>°F</span>
-        <br />
-        <!-- Accent-colored raised button with ripple -->
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-          type="submit">
-          convert to celsius
-        </button>
-      </form>
-  </div>
-  </main>
+    </main>
   </div>
 </body>
 
